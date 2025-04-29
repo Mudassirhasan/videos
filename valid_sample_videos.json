@@ -1,18 +1,4 @@
 [
-  
-  
-  {
-    "id": "3",
-    "title": "Sample Video 3",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    "thumbnail": "https://via.placeholder.com/150?text=Video+3"
-  },
-  {
-    "id": "4",
-    "title": "Sample Video 4",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-    "thumbnail": "https://via.placeholder.com/150?text=Video+4"
-  },
   {
     "id": "5",
     "title": "Sample Video 5",
