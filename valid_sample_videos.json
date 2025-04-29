@@ -1,16 +1,6 @@
 [
-  {
-    "id": "1",
-    "title": "Sample Video 1",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    "thumbnail": "https://via.placeholder.com/150?text=Video+1"
-  },
-  {
-    "id": "2",
-    "title": "Sample Video 2",
-    "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    "thumbnail": "https://via.placeholder.com/150?text=Video+2"
-  },
+  
+  
   {
     "id": "3",
     "title": "Sample Video 3",
