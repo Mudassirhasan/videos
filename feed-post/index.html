@@ -1,21 +1,19 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Redirecting...</title>
-    <script>
-      // Extract ID from URL path
-      const pathParts = window.location.pathname.split('/');
-      const id = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
-      if (id) {
-        const deepLink = `myapp://feed-post/${id}`;
-        window.location.replace(deepLink);
-      } else {
-        document.write('No ID found in URL.');
-      }
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to app...</p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const hash = window.location.hash;
+    const id = hash.replace("#", "");
+    if (id) {
+      window.location.replace(`myapp://feed-post/${id}`);
+    } else {
+      document.body.innerHTML = "<h2>No post ID found in URL.</h2>";
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to your app…</p>
+</body>
 </html>
