@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Opening app…</title>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
   <script>
-    window.onload = function () {
-      const id = window.location.hash.replace('#', '') || '0';
-      const deepLink = `myapp://feed-post/${id}`;
-      const fallbackURL = 'https://google.com';
-
-      // Try opening app using direct location change
-      window.location = deepLink;
-
-      // If app not installed, this fires after delay
-      setTimeout(() => {
-        window.location.href = fallbackURL;
-      }, 1500);
-    };
+    const hash = window.location.hash;
+    const id = hash.replace("#", "");
+    if (id) {
+      window.location.replace(`myapp://feed-post/${id}`);
+    } else {
+      document.body.innerHTML = "<h2>No post ID found in URL.</h2>";
+    }
   </script>
 </head>
 <body>
-  <p>Redirecting to the app…</p>
+  <p>Redirecting to your app…</p>
 </body>
 </html>
