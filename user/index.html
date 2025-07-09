@@ -4,16 +4,20 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    const hash = window.location.hash;
-    const id = hash.replace("#", "");
-    if (id) {
-      window.location.replace(`myapp://user/${id}`);
-    } else {
-      document.body.innerHTML = "<h2>No user ID found in URL.</h2>";
-    }
+    const id = window.location.hash.replace("#", "") || "0";
+    const deepLink = `myapp://feed-post/${id}`;
+    const fallback = "https://google.com";
+
+    // Try to open the app
+    window.location.replace(deepLink);
+
+    // Fallback if app not installed
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, 1500); // 1.5s delay
   </script>
 </head>
 <body>
-  <p>Redirecting to your app…</p>
+  <p>Opening your app…</p>
 </body>
 </html>
