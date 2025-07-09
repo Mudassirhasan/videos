@@ -6,21 +6,18 @@
   <script>
     const id = window.location.hash.replace("#", "") || "0";
     const deepLink = `myapp://user/${id}`;
-    const fallback = "https://google.com";
+    const fallback = "https://play.google.com/store/apps/details?id=com.whatsapp"; // ✅ TEMP fallback
 
     let fallbackTimeout;
 
-    // Cancel fallback if user switches away (e.g. app opens)
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
         clearTimeout(fallbackTimeout);
       }
     });
 
-    // Try opening the app
     window.location.replace(deepLink);
 
-    // Fallback after 1.5s only if app didn't open
     fallbackTimeout = setTimeout(() => {
       window.location.href = fallback;
     }, 1500);
