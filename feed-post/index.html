@@ -9,20 +9,17 @@
       const deepLink = `myapp://feed-post/${id}`;
       const fallbackURL = 'https://google.com';
 
-      // Try opening app via iframe
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = deepLink;
-      document.body.appendChild(iframe);
+      // Try opening app using direct location change
+      window.location = deepLink;
 
-      // Fallback after 2s if app isn't opened
+      // If app not installed, this fires after delay
       setTimeout(() => {
         window.location.href = fallbackURL;
-      }, 2000);
+      }, 1500);
     };
   </script>
 </head>
 <body>
-  <p>Opening the app…</p>
+  <p>Redirecting to the app…</p>
 </body>
 </html>
