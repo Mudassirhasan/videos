@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Redirecting...</title>
-  <script>
-    const hash = window.location.hash;
-    const id = hash.replace("#", "");
-    if (id) {
-      window.location.replace(`myapp://feed-post/${id}`);
-    } else {
-      document.body.innerHTML = "<h2>No post ID found in URL.</h2>";
-    }
-  </script>
-</head>
-<body>
-  <p>Redirecting to your app…</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Opening app…</title>
+    <script>
+      window.onload = function () {
+        // Get post ID from the hash, e.g. #262
+        const id = window.location.hash.replace('#', '') || '0';
+
+        // Build deep link
+        const deepLink = `myapp://feed-post/${id}`;
+
+        // Fallback if app is not installed
+        const fallbackURL = 'https://google.com';
+
+        // Open the app
+        window.location.href = deepLink;
+
+        // Fallback after 2 seconds
+        setTimeout(() => {
+          window.location.href = fallbackURL;
+        }, 2000);
+      };
+    </script>
+  </head>
+  <body>
+    <p>Opening the app…</p>
+    <noscript>
+      <p>Please enable JavaScript to continue.</p>
+    </noscript>
+  </body>
 </html>
