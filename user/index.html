@@ -6,7 +6,14 @@
   <script>
     const id = window.location.hash.replace("#", "") || "0";
     const deepLink = `myapp://user/${id}`;
-    const fallback = "https://play.google.com/store/apps/details?id=com.whatsapp"; // ✅ TEMP fallback
+
+    const isAndroid = /android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // Use different fallbacks
+    const androidFallback = "https://play.google.com/store/apps/details?id=com.whatsapp";
+    const iosFallback = "https://apps.apple.com/app/id310633997"; // WhatsApp iOS App Store
+    const fallback = isAndroid ? androidFallback : iosFallback;
 
     let fallbackTimeout;
 
