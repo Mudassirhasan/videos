@@ -4,31 +4,13 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    const id = window.location.hash.replace("#", "") || "0";
-    const deepLink = `myapp://user-static/${id}`;
-
-    const isAndroid = /android/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    const androidFallback = "https://play.google.com/store/apps/details?id=com.bigbang";
-    const iosFallback = "https://apps.apple.com/app/"; // Replace with your App Store ID if available
-    const fallback = isAndroid ? androidFallback : iosFallback;
-
-    // Cancel fallback if app opens
-    let fallbackTimeout;
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") {
-        clearTimeout(fallbackTimeout);
-      }
-    });
-
-    // Open deep link
-    window.location.replace(deepLink);
-
-    // Fallback after 1.5s
-    fallbackTimeout = setTimeout(() => {
-      window.location.href = fallback;
-    }, 1500);
+    const hash = window.location.hash;
+    const id = hash.replace("#", "");
+    if (id) {
+      window.location.replace(`myapp://user/${id}`);
+    } else {
+      document.body.innerHTML = "<h2>No user ID found in URL.</h2>";
+    }
   </script>
 </head>
 <body>
